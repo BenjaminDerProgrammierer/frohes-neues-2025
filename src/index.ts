@@ -1,6 +1,5 @@
-import p5 from 'p5'; // Type originates at this import. A namespace-style import cannot be called or constructed, and will cause a failure at runtime. Consider using a default import or import require here instead.
+import p5 from 'p5';
 import { Firework } from './firework';
-
 
 export const sketch = (p: p5) => {
   const fireworks: Firework[] = [];
@@ -44,7 +43,7 @@ export const sketch = (p: p5) => {
     p.textFont(silvesterFont);
   
     p.text('Frohes neues \n 2025!', p.width / 2, p.height / 4);
-    for (let i = fireworks.length - 1; i >= 0; i--) {
+    for (let i = 0; i <= fireworks.length - 1; i++) {
       fireworks[i].draw();
   
       if (fireworks[i].isDone) {
@@ -56,9 +55,6 @@ export const sketch = (p: p5) => {
   function delay(millis: number): Promise<void> {
     return new Promise<void>((res) => setTimeout(res, millis));
   }
-
-
 }
 
-export const myp5 = new p5(sketch, document.body);
-
+export const app = new p5(sketch, document.body);
